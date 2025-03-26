@@ -62,6 +62,7 @@ public class SortingAlgorithm {
         while(i < leftList.size() && j < rightList.size()){
             if(leftList.get(i).getAge() <= rightList.get(j).getAge()){
                 emp.set(k, leftList.get(i));
+                i++;
             }else{
                 emp.set(k, rightList.get(j));
                 j++;
@@ -79,4 +80,28 @@ public class SortingAlgorithm {
             k++;
         }//Close 3rd loop
     }//Close merger
+    public void insertion_sort(List<Employee> emp){
+        for(int i = 1; i < emp.size(); i++){
+            int j = emp.get(i).getAge();
+            int k = i - 1;
+            while(k >=0 && emp.get(k).getAge() > j){
+                //emp.get(i).getAge() = emp.get(k).getAge();
+            }
+        }
+    }
+    public void quick_sort(List<Employee> emp){
+
+    }
+    public void selection_sort(List<Employee> emp){
+        for(int i = 0; i < emp.size(); i++){
+            int minIndex = i;
+            for(int j = i + 1; j < emp.size(); j++){
+                if(emp.get(j).getAge() < emp.get(minIndex).getAge()){
+                    minIndex = j;
+                }
+            }
+            swap(emp, i, minIndex);
+        }
+
+    }//Close selection method
 }//Close class

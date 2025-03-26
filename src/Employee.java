@@ -14,7 +14,7 @@ public class Employee {
     public int getID(){
         return this.id;
     }
-    public String getName(){
+    public String getFirstName(){
         return this.first_Name;
     }
     public String getLastName(){
@@ -22,5 +22,15 @@ public class Employee {
     }
     public int getAge(){
         return this.age;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", first_Name='" + first_Name + '\'' +
+                ", last_Name='" + last_Name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
