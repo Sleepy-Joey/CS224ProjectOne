@@ -81,17 +81,39 @@ public class SortingAlgorithm {
         }//Close 3rd loop
     }//Close merger
     public void insertion_sort(List<Employee> emp){
-        for(int i = 1; i < emp.size(); i++){
-            int j = emp.get(i).getAge();
-            int k = i - 1;
-            while(k >=0 && emp.get(k).getAge() > j){
-                //emp.get(i).getAge() = emp.get(k).getAge();
+        for (int i = 1; i < emp.size(); i++) {
+            Employee key = emp.get(i);
+            int j = i - 1;
+            while (j >= 0 && emp.get(j).getAge() > key.getAge()) {
+                emp.set(j + 1, emp.get(j));
+                j--;
             }
+            emp.set(j + 1, key);
         }
     }
     public void quick_sort(List<Employee> emp){
-
+        quickSort(emp, 0, emp.size() - 1);
     }
+    private void quickSort(List<Employee> emp, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(emp, low, high);
+            quickSort(emp, low, pivotIndex - 1);
+            quickSort(emp, pivotIndex + 1, high);
+        }
+    }
+    private int partition(List<Employee> emp, int low, int high) {
+        Employee pivot = emp.get(high); // Pivot is the last element
+        int i = low - 1; // Index of the smaller element
+        for (int j = low; j < high; j++) {
+            if (emp.get(j).getAge() <= pivot.getAge()) {
+                i++;
+                swap(emp, i, j);
+            }
+        }
+        swap(emp, i + 1, high);
+        return i + 1; // Returning the pivot index
+    }
+
     public void selection_sort(List<Employee> emp){
         for(int i = 0; i < emp.size(); i++){
             int minIndex = i;
